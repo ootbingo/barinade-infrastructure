@@ -1,0 +1,9 @@
+version: '3'
+services:
+  barinade-jenkins:
+    image: barinade/jenkins:lts-jdk11
+    ports:
+      - "10090:8080"
+      - "10190:50000"
+    volumes:
+      - /barinade/volumes/jenkins:/var/jenkins_home
