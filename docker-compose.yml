@@ -16,12 +16,12 @@ services:
   irc-test:
     image: inspircd/inspircd-docker
     ports:
-      - "6667:10050"
-      - "6697:10051"
-      - "7000:10052"
-      - "7001:10053"
+      - "10050:6667"
+      - "10051:6697"
+      - "10052:7000"
+      - "10053:7001"
     volumes:
-      - /barinade/volumes/irc/server/test
+      - /barinade/volumes/irc/server/test:/inspircd/conf/
     environment:
       - INSP_NET_NAME=Project Barinade Test IRC
       - INSP_ADMIN_NAME=scaramanga
