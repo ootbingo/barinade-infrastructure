@@ -39,7 +39,7 @@ services:
   irc-service-test:
     image: anope/anope
     volumes:
-      - /barinade/volumes/irc/service/test/conf:/anope/conf/
+      - /barinade/volumes/irc/service/test/anope:/anope
       - /barinade/volumes/irc/service/test/data:/data
     environment:
       - ANOPE_SERVICES_NAME=anope.test
