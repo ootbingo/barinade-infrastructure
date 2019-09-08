@@ -31,4 +31,5 @@ services:
       - INSP_CONNECT_HASH=sha256
       - INSP_OPER_NAME=scaramanga
       - INSP_OPER_PASSWORD_HASH=e6c6d3d1bd62ad6aed666d5e6776b41f1dd6d219fc6bbb2394f903c11172968e
+      - INSP_OPER_HASH=sha256
       - INSP_OPER_SSLONLY=no
