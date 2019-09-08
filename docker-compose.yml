@@ -36,6 +36,10 @@ services:
       - INSP_SERVICES_NAME=atheme.test
       - INSP_SERVICES_IPADDR=host.docker.internal
       - INSP_SERVICES_PASSWORD=bingo
+    networks:
+      barinade-test:
+        aliases:
+          - irc
   irc-service-test:
     image: vanityshed/atheme
     volumes:
@@ -43,3 +47,9 @@ services:
       - /barinade/volumes/irc/service/test/etc:/services/etc
     depends_on:
       - irc-test
+    networks:
+      barinade-test:
+
+networks:
+  barinade-test:
+    driver: default
