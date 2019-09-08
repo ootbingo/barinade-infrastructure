@@ -44,6 +44,8 @@ services:
     environment:
       - ANOPE_SERVICES_NAME=anope.test
       - ANOPE_SERVICES_VHOST=anope.test
-      - ANOPE_UPLINK_IP=host.docker.internal
+      - ANOPE_UPLINK_IP=irc-test
       - ANOPE_UPLINK_PORT=10050
       - ANOPE_UPLINK_PASSWORD=bingo
+    depends_on:
+      - irc-test
