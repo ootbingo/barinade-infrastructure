@@ -13,3 +13,20 @@ services:
       - "10091:8081"
     volumes:
       - /barinade/volumes/nexus:/nexus-data
+  irc-test:
+    image: inspircd/inspircd-docker
+    ports:
+      - "6667:10050"
+      - "6697:10051"
+      - "7000:10052"
+      - "7001:10053"
+    volumes:
+      - /barinade/volumes/irc/server/test
+    environment:
+      - INSP_NET_NAME=Project Barinade Test IRC
+      - INSP_ADMIN_NAME=scaramanga
+      - INSP_ADMIN_NICK=scaramanga
+      - INSP_ADMIN_EMAIL=scaramangado@gmail.com
+      - INSP_OPER_NAME=scaramanga
+      - INSP_OPER_PASSWORD_HASH=8bdfa150e03de7e699064152ba087e5b1250bb57676dac5dab7a6854c4f6057e
+      - INSP_OPER_SSLONLY=no
