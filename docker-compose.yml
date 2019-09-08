@@ -15,6 +15,7 @@ services:
       - /barinade/volumes/nexus:/nexus-data
   irc-test:
     image: inspircd/inspircd-docker
+    context: ./test-irc/
     ports:
       - "10050:6667"
       - "10051:6697"
