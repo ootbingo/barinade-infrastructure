@@ -34,7 +34,7 @@ services:
       - INSP_OPER_HASH=sha256
       - INSP_OPER_SSLONLY=no
       - INSP_SERVICES_NAME=atheme.test
-      - INSP_SERVICES_IPADDR=host.docker.internal
+      - INSP_SERVICES_IPADDR=irc-service
       - INSP_SERVICES_PASSWORD=bingo
     networks:
       barinade-test:
@@ -49,6 +49,8 @@ services:
       - irc-test
     networks:
       barinade-test:
+        aliases:
+          - irc-service
 
 networks:
   barinade-test:
