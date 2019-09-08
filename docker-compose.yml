@@ -37,15 +37,9 @@ services:
       - INSP_SERVICES_IPADDR=host.docker.internal
       - INSP_SERVICES_PASSWORD=bingo
   irc-service-test:
-    image: anope/anope
+    image: vanityshed/atheme
     volumes:
-      - /barinade/volumes/irc/service/test/conf:/anope/conf/
-      - /barinade/volumes/irc/service/test/data:/data
-    environment:
-      - ANOPE_SERVICES_NAME=anope.test
-      - ANOPE_SERVICES_VHOST=anope.test
-      - ANOPE_UPLINK_IP=irc-test
-      - ANOPE_UPLINK_PORT=10050
-      - ANOPE_UPLINK_PASSWORD=bingo
+      - /barinade/volumes/irc/service/test/var:/services/var
+      - /barinade/volumes/irc/service/test/etc:/services/etc
     depends_on:
       - irc-test
