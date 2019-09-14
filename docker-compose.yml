@@ -54,7 +54,7 @@ services:
   sonarqube:
     image: sonarqube:lts
     ports:
-      - "10091:9000"
+      - "10092:9000"
     volumes:
       - /barinade/volumes/sonar/conf:/opt/sonarqube/conf
       - /barinade/volumes/sonar/data:/opt/sonarqube/data
