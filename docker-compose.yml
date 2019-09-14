@@ -51,6 +51,15 @@ services:
       barinade-test:
         aliases:
           - irc-service
+  sonarqube:
+    image: sonarqube:lts
+    ports:
+      - "10091:9000"
+    volumes:
+      - /barinade/volumes/sonar/conf:/opt/sonarqube/conf
+      - /barinade/volumes/sonar/data:/opt/sonarqube/data
+      - /barinade/volumes/sonar/logs:/opt/sonarqube/logs
+      - /barinade/volumes/sonar/extensions:/opt/sonarqube/extensions
 
 networks:
   barinade-test:
