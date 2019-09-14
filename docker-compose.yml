@@ -51,34 +51,6 @@ services:
       barinade-test:
         aliases:
           - irc-service
-  sonarqube:
-    image: sonarqube:lts
-    ports:
-      - "10092:9000"
-    volumes:
-      - /barinade/volumes/sonar/conf:/opt/sonarqube/conf
-      - /barinade/volumes/sonar/data:/opt/sonarqube/data
-      - /barinade/volumes/sonar/logs:/opt/sonarqube/logs
-      - /barinade/volumes/sonar/extensions:/opt/sonarqube/extensions
-    # Provide JDBC connection details (including credentials) in environment file
-    env_file:
-      - sonar.env
-    depends_on:
-      - postgres
-    networks:
-      barinade-test:
-        aliases:
-          - sonarqube
-  postgres:
-    image: postgres:12
-    ports:
-      - "10010:5432"
-    volumes:
-      - /barinade/volumes/postgres/data:/var/lib/postgresql/data
-    networks:
-      barinade-test:
-        aliases:
-          - postgres
 
 networks:
   barinade-test:
