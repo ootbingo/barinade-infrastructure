@@ -11,6 +11,7 @@ services:
     image: sonatype/nexus3
     ports:
       - "10091:8081"
+      - "10191:8082"
     volumes:
       - /barinade/volumes/nexus:/nexus-data
   irc-test:
