@@ -11,7 +11,7 @@ services:
     image: sonatype/nexus3
     ports:
       - "10091:8081"
-      - "10191:8082"
+      - "10192:8082"
     volumes:
       - /barinade/volumes/nexus:/nexus-data
   irc-test:
@@ -52,6 +52,22 @@ services:
       barinade-test:
         aliases:
           - irc-service
+  nginx:
+    image: nginx:1.15-alpine
+    command: "/bin/sh -c 'while :; do sleep 6h & wait $${!}; nginx -s reload; done & nginx -g \"daemon off;\"'"
+    ports:
+      - "10020:80"
+      - "10191:10191"
+    volumes:
+      - /barinade/volumes/nginx:/etc/nginx/conf.d
+      - /barinade/volumes/certbot/conf:/etc/letsencrypt
+      - /barinade/volumes/certbot/www:/var/www/certbot
+  certbot:
+    image: certbot/certbot
+    entrypoint: "/bin/sh -c 'trap exit TERM; while :; do certbot renew; sleep 12h & wait $${!}; done;'"
+    volumes:
+      - /barinade/volumes/certbot/conf:/etc/letsencrypt
+      - /barinade/volumes/certbot/www:/var/www/certbot
 
 networks:
   barinade-test:
