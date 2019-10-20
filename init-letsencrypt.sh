@@ -5,9 +5,9 @@ if ! [ -x "$(command -v docker-compose)" ]; then
   exit 1
 fi
 
-domains=(h2841273.stratoserver.net www.h2841273.stratoserver.net)
+domains=(scaramangado.de www.scaramangado.de)
 rsa_key_size=4096
-data_path="/barinade/volumes/certbot"
+data_path="/docker/volumes/certbot"
 email="scaramangado@gmail.com" # Adding a valid address is strongly recommended
 staging=0 # Set to 1 if you're testing your setup to avoid hitting request limits
 
@@ -39,7 +39,7 @@ echo
 
 
 echo "### Starting nginx ..."
-docker-compose up --force-recreate -d nginx
+docker-compose up --force-recreate -d barinade-nginx
 echo
 
 echo "### Deleting dummy certificate for $domains ..."
@@ -77,4 +77,4 @@ docker-compose run --rm --entrypoint "\
 echo
 
 echo "### Reloading nginx ..."
-docker-compose exec nginx nginx -s reload
+docker-compose exec barinade-nginx nginx -s reload
