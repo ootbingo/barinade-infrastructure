@@ -1,6 +1,9 @@
-version: '3'
+version: '3.7'
 services:
   barinade-jenkins:
+    build:
+      context: .
+      dockerfile: Dockerfile-barinade-jenkins
     image: barinade/jenkins:lts-jdk11
     ports:
       - "10090:8080"
