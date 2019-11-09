@@ -4,3 +4,13 @@ services:
     image: barinade/bot:dev
     volumes:
       - /barinade/volumes/bot/dev/etc/barinade:/etc/barinade
+  db:
+    image: postgres:alpine
+    volumes:
+      - /barinade/volumes/bot/dev/db:/var/lib/postgresql/data
+    ports:
+      - "10010:5432"
+    environment:
+      - POSTGRES_USER=scaramanga
+      - POSTGRES_PASSWORD_FILE=/barinade/barinade-infrastructure/dev/postgres_pwd
+      
