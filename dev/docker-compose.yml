@@ -4,6 +4,8 @@ services:
     image: barinade/bot:dev
     volumes:
       - /barinade/volumes/bot/dev/etc/barinade:/etc/barinade
+    environment:
+      - "SPRING_PROFILES_ACTIVE=int"
   db:
     image: postgres:alpine
     volumes:
