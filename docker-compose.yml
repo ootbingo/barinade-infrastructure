@@ -61,6 +61,7 @@ services:
     command: "/bin/sh -c 'while :; do sleep 6h & wait $${!}; nginx -s reload; done & nginx -g \"daemon off;\"'"
     ports:
       - "10443:443"
+      - "10191:10191"
     volumes:
       - /barinade/volumes/nginx:/etc/nginx/conf.d
       - /docker/volumes/certbot/conf:/etc/letsencrypt
