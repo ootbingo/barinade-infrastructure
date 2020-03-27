@@ -60,8 +60,7 @@ services:
     image: nginx:1.15-alpine
     command: "/bin/sh -c 'while :; do sleep 6h & wait $${!}; nginx -s reload; done & nginx -g \"daemon off;\"'"
     ports:
-      - "80:80"
-      - "10191:10191"
+      - "10443:443"
     volumes:
       - /barinade/volumes/nginx:/etc/nginx/conf.d
       - /docker/volumes/certbot/conf:/etc/letsencrypt
