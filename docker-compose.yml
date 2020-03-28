@@ -1,16 +1,5 @@
 version: '3.7'
 services:
-  barinade-jenkins:
-    build:
-      context: .
-      dockerfile: Dockerfile-barinade-jenkins
-    image: barinade/jenkins:lts-jdk11
-    ports:
-      - "10090:8080"
-      - "10190:50000"
-    volumes:
-      - /barinade/volumes/jenkins:/var/jenkins_home
-      - /var/run/docker.sock:/var/run/docker.sock
   barinade-nexus:
     image: sonatype/nexus3
     ports:
