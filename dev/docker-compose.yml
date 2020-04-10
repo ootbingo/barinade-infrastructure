@@ -2,12 +2,14 @@ version: '3'
 services:
   bot:
     image: barinade/bot:dev
+    restart: unless-stopped
     volumes:
       - /barinade/volumes/bot/dev/etc/barinade:/etc/barinade
     environment:
       - "SPRING_PROFILES_ACTIVE=int"
   db:
     image: postgres:alpine
+    restart: unless-stopped
     volumes:
       - /barinade/volumes/bot/dev/db:/var/lib/postgresql/data
       - /barinade/barinade-infrastructure/dev:/barinade/barinade-infrastructure/dev
