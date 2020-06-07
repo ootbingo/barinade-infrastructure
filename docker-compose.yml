@@ -8,44 +8,6 @@ services:
       - "10192:8082"
     volumes:
       - /barinade/volumes/nexus:/nexus-data
-  irc-test:
-    image: inspircd/inspircd-docker
-    ports:
-      - "10050:6667"
-      - "10051:6697"
-      - "10052:7000"
-      - "10053:7001"
-    volumes:
-      - /barinade/volumes/irc/server/test:/inspircd/conf/
-    environment:
-      - INSP_NET_NAME=Project Barinade Test IRC
-      - INSP_ADMIN_NAME=scaramanga
-      - INSP_ADMIN_NICK=scaramanga
-      - INSP_ADMIN_EMAIL=scaramangado@gmail.com
-      - INSP_CONNECT_PASSWORD=a45e2df6b898e7c4fb895fd86ed479b7e158eb71246fae17e5f0b55e217d5bdc
-      - INSP_CONNECT_HASH=sha256
-      - INSP_OPER_NAME=scaramanga
-      - INSP_OPER_PASSWORD_HASH=e6c6d3d1bd62ad6aed666d5e6776b41f1dd6d219fc6bbb2394f903c11172968e
-      - INSP_OPER_HASH=sha256
-      - INSP_OPER_SSLONLY=no
-      - INSP_SERVICES_NAME=atheme.test
-      - INSP_SERVICES_IPADDR=irc-service
-      - INSP_SERVICES_PASSWORD=bingo
-    networks:
-      barinade-test:
-        aliases:
-          - irc
-  irc-service-test:
-    image: vanityshed/atheme
-    volumes:
-      - /barinade/volumes/irc/service/test/var:/services/var
-      - /barinade/volumes/irc/service/test/etc:/services/etc
-    depends_on:
-      - irc-test
-    networks:
-      barinade-test:
-        aliases:
-          - irc-service
   barinade-nginx:
     restart: unless-stopped
     image: nginx:1.15-alpine
@@ -55,7 +17,3 @@ services:
       - "10191:10191"
     volumes:
       - /barinade/volumes/nginx:/etc/nginx/conf.d
-
-networks:
-  barinade-test:
-    driver: bridge
