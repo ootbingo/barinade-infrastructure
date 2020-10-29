@@ -1,0 +1,22 @@
+version: '3'
+services:
+  bot:
+    image: barinade/bot:prod
+    restart: unless-stopped
+    volumes:
+      - /barinade/volumes/bot/prod/etc/barinade:/etc/barinade
+    environment:
+      - "SPRING_PROFILES_ACTIVE=prod"
+  db:
+    image: postgres:alpine
+    restart: unless-stopped
+    volumes:
+      - /barinade/volumes/bot/prod/db:/var/lib/postgresql/data
+      - /barinade/barinade-infrastructure/prod:/barinade/barinade-infrastructure/prod
+    ports:
+      - "10110:5432"
+    environment:
+      - POSTGRES_DB=BARINADE
+      - POSTGRES_USER=scaramanga
+      - POSTGRES_PASSWORD_FILE=/barinade/barinade-infrastructure/prod/postgres_pwd
+      
