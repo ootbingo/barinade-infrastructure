@@ -1,13 +1,5 @@
 version: '3.7'
 services:
-  barinade-nexus:
-    image: sonatype/nexus3
-    restart: unless-stopped
-    ports:
-      - "10091:8081"
-      - "10192:8082"
-    volumes:
-      - /barinade/volumes/nexus:/nexus-data
   barinade-nginx:
     restart: unless-stopped
     image: nginx:1.15-alpine
