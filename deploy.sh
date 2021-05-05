@@ -1,9 +1,10 @@
 #!/bin/bash
 
-echo "$2" | docker login docker.pkg.github.com -u $1 --password-stdin
+echo "$2" | sudo docker login docker.pkg.github.com -u $1 --password-stdin
 
 case $3 in
 	master) ENV=prod ;;
+	main) ENV=prod ;;
 	develop) ENV=int ;;
 	*) echo "Branch not supported" && exit 1 ;;
 esac
