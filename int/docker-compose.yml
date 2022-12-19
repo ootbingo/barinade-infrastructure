@@ -1,7 +1,7 @@
-version: '3'
+version: '3.9'
 services:
   bot:
-    image: docker.pkg.github.com/ootbingo/barinade-bot/bot:int
+    image: ghcr.io/ootbingo/barinade-bot/bot:int
     restart: unless-stopped
     volumes:
       - /barinade/volumes/bot/int/etc/barinade:/etc/barinade
