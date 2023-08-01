@@ -9,6 +9,6 @@ case $3 in
 	*) echo "Branch not supported" && exit 1 ;;
 esac
 
-sudo docker-compose -f /barinade/barinade-infrastructure/$ENV/docker-compose.yml pull bot
-sudo docker-compose -f /barinade/barinade-infrastructure/$ENV/docker-compose.yml up -d --force-recreate bot
+sudo -u \#1000 docker compose -f /barinade/barinade-infrastructure/$ENV/docker-compose.yml pull bot
+sudo -u \#1000 docker compose -f /barinade/barinade-infrastructure/$ENV/docker-compose.yml up -d --force-recreate bot
 
